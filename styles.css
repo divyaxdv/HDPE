@@ -1,1 +1,2253 @@
-/* Main stylesheet — responsive layout, sticky header, carousel */
+
+/* Main content container with responsive padding */
+.fold-container {
+  padding-right: 180px;
+  padding-left: 180px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid #E1E3E8
+}
+
+/* ↓ Below 1440px: 100px on all sides */
+@media (max-width: 1440px) {
+.fold-container {
+padding: 100px !important;
+}
+}
+
+/* ↓ Below 1200px: 80px on all sides */
+@media (max-width: 1200px) {
+.fold-container{
+padding: 80px !important;
+}
+.catalogue-text {
+max-width: 330px !important;
+}
+
+}
+
+/* ↓ Below 1080px: 80px top/bottom, 60px left/right */
+@media (max-width: 1080px) {
+.fold-container  {
+padding: 80px 60px !important;
+}
+}
+
+/* ↓ Below 800px: 80px top/bottom, 48px left/right */
+@media (max-width: 800px) {
+.fold-container  {
+padding: 80px 48px !important;
+}
+}
+
+/* ↓ Below 360px: 48px top/bottom, 16px left/right */
+@media (max-width: 360px) {
+.fold-container  {
+padding: 48px 16px !important;
+}
+}
+
+
+.footer-bottom{
+padding: 12px 12px !important;
+}
+
+/* ========================================
+GLOBAL RESETS & BASE STYLES
+======================================== */
+/* Reset default margins on heading and paragraph elements */
+h1,h2,h3,h4,p,h6,ul{
+margin: 0px;
+}
+
+/* Body styling - sets default font and background */
+body{
+margin: 0px;
+font-family: "Inter", sans-serif;
+font-weight: 500;
+background-image: url("./assets/img/NoiseTexture.png");
+background-color: white;
+}
+
+/* ========================================
+HEADER & NAVIGATION STYLES
+======================================== */
+/* Main header styling - sticky positioning with high z-index */
+header{
+background-color: white !important;
+position: relative;
+z-index: 100;
+min-height: 77px;
+border-bottom: solid 1px #E1E3E8;
+padding-top: 0 !important;
+padding-bottom: 0 !important;
+}
+
+/* Override fold container padding in header for compact spacing */
+header .fold-container{
+padding-top: 16px !important;
+padding-bottom: 16px !important;
+border-bottom: none;
+}
+
+/* Flex container for header content alignment */
+.header-content{  display: flex;
+align-items: center;
+justify-content:space-between;}
+
+/* Navigation list styling - horizontal flex layout */
+header ul{
+display: flex;
+column-gap: 20px;
+align-items: center;
+}
+
+/* Remove list styling from all list elements */
+li, ol, ul{
+list-style: none;
+}
+
+/* ========================================
+BUTTON STYLES
+======================================== */
+/* Base button styling - padding and border radius */
+button{
+padding: 12px 16px;
+border-radius: 16px;
+outline: auto;
+font-family: "Inter", sans-serif;
+font-size: 14px;
+}
+
+/* Primary blue button style */
+.blue-button{
+background-color: #2B3990;
+color:#FFFFFF; 
+}
+
+/* ========================================
+BREADCRUMB NAVIGATION
+======================================== */
+/* Breadcrumb container - positioned absolutely for layout control */
+.breadcrumb{
+position: absolute;
+top: 32px;
+}
+
+/* Breadcrumb list - flexbox for horizontal layout */
+.breadcrumb ol{
+display: flex;
+padding: 0;
+}
+
+/* Breadcrumb links - remove default anchor styling */
+.breadcrumb a{
+color: inherit;
+text-decoration: none;
+}
+
+/* Add arrow separator between breadcrumb items using ::after pseudo-element */
+.breadcrumb li::after {
+content: "";
+display: inline-block; 
+width: 10px;            
+height: 10px;
+background-image: url("./assets/icons/right-arrow.svg");
+background-size: contain;
+background-repeat: no-repeat;
+margin: 0 8px;
+vertical-align: middle; 
+}
+
+/* Hide arrow after last breadcrumb item */
+.breadcrumb li:last-child::after {
+content: none;
+}
+
+/* Style for non-active breadcrumb items */
+.breadcrumb li {
+color: #4D545C !important;
+}
+
+/* Emphasize the last (active) breadcrumb item */
+.breadcrumb  li:last-child {
+color: black !important;
+}
+
+/* ========================================
+PRODUCT/QUOTE CARD STYLES
+======================================== */
+/* Remove shadow from image buttons in product containers */
+.main-image-container button img{
+border: none; 
+box-shadow: none;
+}
+
+/* Flex wrapper for quote/certification badges */
+.quote-cert{
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+/* Individual quote certification content styling */
+.quote-cert-content{
+background-color: #F7F8F9;
+padding: 8px 12px;
+display: flex;
+column-gap: 10px;
+border-radius: 6px;
+border: solid 1px #E1E3E8;
+box-shadow: 0px 1px 2px 0px #0000000D;
+align-items: center;
+}
+
+/* Main quote/product details section - flex layout for responsive design */
+.quote-details{
+flex: 1;
+}
+
+/* Large heading for quote/product details */
+.quote-details h1{
+text-align: left;
+font-family: "Urbanist", sans-serif;
+font-weight: 700;
+font-size: 3.5rem;
+letter-spacing: 0px;
+line-height: 120%;
+color:#111827;
+padding-top: 16px;
+}
+
+/* Container for quote/product details content */
+.quote-details-content{
+display: flex;
+flex-direction:column ;
+row-gap: 24px;
+}
+
+/* Flex container for quote features list */
+.quote-features{
+display: flex;
+row-gap: 16px;
+flex-direction: column;
+}
+
+/* Individual feature item styling */
+.quote-features div{
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+/* Icon sizing for feature items */
+.quote-features img{
+height: 16px;
+width: 16px;
+}
+
+/* Quote tab card styling */
+.quote-tab{
+background-color: #FFFFFF;
+padding: 16px 20px;
+outline: solid 1px #CFD1D4;
+border-radius: 10px;
+display:flex;
+justify-content: flex-start;
+row-gap: 16px;
+flex-direction: column;
+}
+
+/* Quote pricing section layout */
+.quote-price{
+display: flex;
+row-gap: 8px;
+flex-direction: column;
+}
+
+/* Pricing label text styling */
+.quote-price span{
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: -0.6%;
+color:#6A7077;
+}
+
+/* Price amount heading styling */
+.quote-price h3{
+font-weight: 600;
+font-style: Semi Bold;
+font-size: 20px;
+line-height: 140%;
+letter-spacing: -0.6%;
+margin: 0;
+}
+
+/* Container for quote tab detail badges */
+.quote-tab-details{
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+}
+
+/* Style for detail badge items - yellow warning color scheme */
+.quote-tab-details div{
+border-radius: 6px;
+background-color: #FEF3C7;
+color: #92400E;
+padding: 6px 12px;
+}
+
+/* Certification section styling - gray background */
+.quote-tab-cert div{
+padding: 6px 12px;
+background-color: #F3F4F6;
+color: #0D0D0D;
+}
+
+/* Flex container for certification tags */
+.quote-tab-cert{
+display: flex;
+}
+
+/* ========================================
+HERO SECTION STYLES
+======================================== */
+/* Main hero section with flex layout for responsiveness */
+.hero-section{
+display: flex;
+flex-wrap:wrap;
+gap: 3.75rem;
+position: relative;
+}
+
+
+/* Decorative blur layer positioned in top right */
+.layer-blur{
+position:absolute;
+top: 0;
+right: 0;
+}
+
+/* Container for hero action buttons */
+.hero-button{
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+/* Hero button text styling */
+.hero-button button{
+padding: 14px 24px;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+}
+
+/* Secondary outline style button */
+.outline-button{
+outline: inherit;
+border: 1px solid #2B3990;
+display: flex;
+gap: 8px;
+background-color: inherit;
+color: #262A2E;
+display: flex;
+justify-content: center;
+}
+
+/* Active state for outline buttons */
+.outline-button:active{
+color: #FFFF;
+}
+
+/* Image filter for active outline button state */
+.hero-button .outline-button:active img {
+filter: brightness(0) saturate(100%) invert(91%) sepia(100%) saturate(27%) hue-rotate(254deg) brightness(108%) contrast(100%);
+}
+
+/* Default image filter for outline button - dark blue tint */
+.hero-button .outline-button img{
+filter: brightness(0) saturate(100%) invert(14%) sepia(3%) saturate(2028%) hue-rotate(169deg) brightness(96%) contrast(92%);
+}
+
+/* ========================================
+TRUSTED COMPANIES / SOCIAL PROOF SECTION
+======================================== */
+/* Container for trusted companies logos section */
+.trusted-companies{
+padding-top: 80px;
+display: flex;
+flex-direction: column;
+align-items: center;
+row-gap: 20px;
+overflow: hidden;
+}
+
+/* Text label for trusted companies */
+.trusted-companies span{
+color: #878B94;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+}
+
+/* Flex container for company logos */
+.company-img{
+display: flex;
+column-gap: 3rem;
+justify-content: center;
+}
+
+/* ========================================
+TECHNICAL SPECIFICATIONS & TABLE STYLES
+======================================== */
+/* Dark background for tech specifications section */
+.tech-spec{
+backdrop-filter: inherit;
+background-color: #111827;
+}
+
+/* Table styling for data display - dark theme */
+table {
+background-color: #1F2937;
+width: 100%;
+border-collapse: separate;
+border-spacing: 0;
+border: 1.25px solid #374151;
+border-radius: 12px;
+overflow: hidden;
+}
+
+/* Table header styling */
+thead {
+background-color: #374151;
+color: white;
+}
+
+/* Table cell styling - consistent padding and borders */
+th, td {
+padding: 12px 16px;
+font-size: 14px;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: -0.006em;
+border-bottom: 1px solid #374151;
+color: white;
+}
+
+/* Header cells - left aligned text */
+th {
+text-align: left;
+}
+
+/* Remove border from last row */
+tr:last-child td {
+border-bottom: none;
+}
+
+/* ========================================
+COMMON CONTENT & HEADING STYLES
+======================================== */
+/* Flex container for common content sections */
+.common-content{
+display: flex;
+row-gap: 56px;
+flex-direction: column;
+}
+
+/* Heading styling for sections - left aligned with spacing */
+.common-heading{
+display: flex;
+row-gap: 20px;
+flex-direction: column;
+text-align: left;
+}
+
+/* Large section heading - white text for dark backgrounds */
+.common-heading h3{
+font-family: "Urbanist", sans-serif;
+font-weight: 700;
+font-size: 48px;
+line-height: 120%;
+letter-spacing: 0px;
+color: #FFFFFF;
+}
+
+/* Description text under headings */
+.common-heading p{
+max-width: 800px;
+font-weight: 400;
+font-size: 18px;
+line-height: 160%;
+letter-spacing: -0.6%;
+color: #FFFFFFCC;
+}
+
+/* Center alignment for download button area */
+.tech-download{
+display: flex;
+justify-content: center;
+}
+
+/* Download button in tech section - white border with white text */
+.tech-download button {
+padding: 14px 20px;
+border: 1px solid white;
+color: white;
+filter: none;
+}
+
+/* ========================================
+CARD GRID & CARD STYLES
+======================================== */
+/* Responsive grid layout for cards */
+.card-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 1.5rem;
+}
+
+/* Individual card styling */
+.card-grid .card {
+background: white;
+border: 1.25px solid #374151;
+border-radius: 12px;
+padding: 1rem 1.25rem;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Card title styling */
+.card-grid .card-title {
+font-size: 16px;
+font-weight: 600;
+color: #111827;
+margin-bottom: 0.5rem;
+}
+
+/* Card description text */
+/* Card description text */
+.card-grid .card-text {
+font-size: 14px;
+line-height: 20px;
+color: #374151;
+letter-spacing: -0.006em;
+}
+
+/* ========================================
+DARK TECH SPEC SECTION VARIANT
+======================================== */
+/* Heading color override for dark tech spec section */
+.tech-spec-2 h3{
+color: #0D0D0D
+}
+
+/* Paragraph color override for dark tech spec section */
+.tech-spec-2 p{
+color: #6A7077
+}
+
+/* ========================================
+FAQ SECTION STYLES
+======================================== */
+/* Override heading color for FAQ section */
+.faq .common-heading h3{
+color: #111827;
+}
+
+/* Highlight color for FAQ section headings */
+.faq .common-heading span{
+color: #2B3990;
+}
+
+/* ========================================
+CATALOGUE / EMAIL SIGNUP SECTION
+======================================== */
+/* Main catalogue section container - light gray background */
+.catalogue-section{
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: solid 1px #CFD1D4;
+background-color: #F7F8F9;
+flex-wrap: wrap; /* Makes it responsive */
+padding: 20px;
+border-radius: 10px;
+row-gap: 20px;
+}
+
+/* Text content area in catalogue section */
+.catalogue-text{
+display: flex;
+flex-direction: column;
+row-gap: 12px;
+}
+
+/* Catalogue section heading styling */
+.catalogue-section h3{
+font-family: "Urbanist", sans-serif;
+font-weight: 600;
+font-size: 26px;
+line-height: 120%;
+letter-spacing: 0px;
+}
+
+/* Catalogue section description text */
+.catalogue-section p{
+font-family: "Inter", sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+color: #262A2E;
+}
+
+/* Form container in catalogue section */
+.catalogue-form{
+min-width: 360px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+/* Form button styling - full width */
+form button{
+width: 100%;
+text-align: center;
+}
+
+form input{
+padding: 10px 0px 10px 12px;
+border-radius: 8px;
+box-shadow: 0px 1px 2px 0px #0A0D1408;
+border: 1px solid  #E1E3E8;
+color: #959BA4;
+text-align: left;
+
+font-family: "Inter", sans-serif;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: -0.6%;
+
+}
+
+/* ========================================
+FAQ / ACCORDION STYLES
+======================================== */
+/* Container for all FAQ items */
+.faq-container{
+display: flex;
+flex-direction: column;
+row-gap: 16px;
+}
+
+/* Arrow wrapper circle styling */
+.arrow-wrapper {
+width: 24px;
+height: 24px;
+border-radius: 50%;
+background-color: #F1F2F3;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.3s ease;
+}
+
+/* Individual FAQ item card */
+.faq-item{
+box-shadow: 0px 1px 2px 0px #0000000D;
+border: 1px solid  #E1E3E8;
+background-color: #FFFFFF;
+border-radius: 12px;
+color: black;
+padding: 20px;
+display: flex;
+flex-direction: column;
+}
+
+/* FAQ question header - clickable area */
+.faq-question {
+display: flex;
+justify-content: space-between;
+align-items: center;
+cursor: pointer;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.3px;
+}
+
+/* Arrow icon sizing */
+.arrow {
+padding: 9px;
+width: 100%;
+height: auto;
+}
+
+/* Arrow styling when FAQ item is open - rotation and color change */
+.faq-item.open .arrow-wrapper {
+background-color: #FFF1F2;
+transform: rotate(180deg);
+transition: transform 0.4s ease, background-color 0.4s ease;
+}
+
+/* FAQ answer content - hidden by default */
+.faq-answer {
+max-height: 0;
+color: #535A61;
+padding-top: 0px;
+transition: max-height 0.4s ease, padding-top 0.4s ease, opacity 0.4s ease;
+opacity: 0;
+}
+
+/* Show answer content when FAQ item is open */
+.faq-item.open .faq-answer {
+max-height: 500px; /* Large enough for full content */
+padding-top: 20px;
+opacity: 1;
+}
+
+/* ========================================
+VERSATILITY SECTION STYLES
+======================================== */
+/* Remove bottom border from versatility fold container */
+.versatility-section .fold-container{
+border-bottom: none;
+padding-bottom: 56px;
+}
+
+/* Constrain width for better readability */
+.versatility-section h3,
+.versatility-section p {
+max-width: 640px;
+}
+
+/* Heading color for versatility section */
+.versatility-section h3{
+color: #0D0D0D;
+}
+
+/* Paragraph color for versatility section */
+.versatility-section p{
+color: #4D545C;
+}
+
+/* ========================================
+CAROUSEL / TESTIMONIAL SECTION
+======================================== */
+/* Header for carousel - flex layout for navigation controls */
+.carousel-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+}
+
+/* Navigation button group for carousel */
+.circular-button-nav {
+display: flex;
+gap: 20px;
+padding: 16px 0;
+}
+
+/* Circular navigation button styling */
+.circular-button {
+width: 68px;
+height: 68px;
+border-radius: 50%;
+border: 1px solid #CFD1D4;
+background-color: white;
+box-shadow: 0px 2px 4px 0px #1B1C1D0A;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: box-shadow 0.2s ease, opacity 0.3s ease;
+padding: 0;
+outline: inherit;
+}
+
+/* Active state for circular buttons */
+.circular-button:active,.image-section button:active {
+transform: none; 
+background-color: #111827; 
+}
+
+/* Hover effect for circular buttons */
+.circular-button:hover {
+box-shadow: 0px 4px 8px 0px #1b1c1d1a;
+}
+
+/* Disabled state for carousel buttons */
+.circular-button:disabled {
+opacity: 0.4;
+cursor: default;
+pointer-events: none;
+}
+
+/* Icon sizing in circular buttons */
+.circular-button img {
+width: 24px;
+height: 24px;
+object-fit: contain;
+}
+
+/* Main carousel container with overflow hidden */
+.carousel-section {
+overflow: hidden;
+padding-bottom: 100px;
+border-bottom: 1px solid #E1E3E8;
+}
+
+/* Carousel wrapper to contain items */
+.carousel-wrapper {
+overflow: hidden;
+}
+
+/* Auto-scrolling testimonies track */
+.testemonies-track{
+display: flex;    
+animation: scroll-left 30s linear infinite;
+width: max-content;
+gap: 24px;
+}
+
+/* Animation keyframes for continuous scroll */
+@keyframes scroll-left {
+0% {
+transform: translateX(0);
+}
+100% {
+transform: translateX(-50%);
+}
+}
+
+/* Carousel track for manual carousel navigation */
+.carousel-track {
+display: flex;
+transition: transform 0.4s ease;
+will-change: transform;
+}
+
+/* Individual carousel item */
+.carousel-item {
+margin-right: 16px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* Carousel card with background image and overlay */
+.carousel-item .card{
+border-radius: 32px;
+max-width: 420px;
+min-width: 320px;
+height: 420px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+gap: 12px;
+padding: 32px 24px;
+position: relative;
+overflow: hidden;
+}
+
+/* Background image for carousel cards */
+.card-bg-image {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: 0;
+}
+
+/* Dark gradient overlay for text readability on carousel cards */
+.card-gradient-overlay {
+position: absolute;
+inset: 0;
+z-index: 1;
+background: linear-gradient(
+180deg,
+rgba(0, 0, 0, 0) 0%,
+rgba(0, 0, 0, 0.58) 40.23%,
+rgba(0, 0, 0, 0.8) 75.96%
+);
+}
+
+/* Blur overlay for enhanced text readability */
+.card-blur-overlay {
+position: absolute;
+inset: 0;
+z-index: 2;
+backdrop-filter: blur(22px);
+-webkit-backdrop-filter: blur(22px);
+mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 100%);
+-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 100%);
+}
+
+/* Carousel card content - positioned above overlays */
+.card-content {
+position: relative;
+z-index: 2;
+display: flex;
+flex-direction: column;
+row-gap: 12px;
+max-width: 350px;
+}
+
+/* Carousel card title styling */
+.card-content h6{
+font-family: "Urbanist", sans-serif;
+font-weight: 500;
+font-size: 26px;
+line-height: 120%;
+letter-spacing: 0px;
+color: #FFFFFF;
+}
+
+/* Carousel card description text */
+.card-content p{
+font-family: "Inter", sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+color: #FFFFFF
+}
+
+/* ========================================
+TABS & HDPE DATA SECTION
+======================================== */
+/* Tab navigation container */
+.tabs {
+display: flex;
+gap: 16px;
+position: relative;
+justify-content: space-between;
+}
+
+/* Horizontal line behind tabs */
+.tabs::before {
+content: "";
+position: absolute;
+top: 50%;
+left: 1.5rem;
+right: 1.5rem;
+height: 2px;
+background-color: #ccc;
+z-index: 0;
+}
+
+/* Individual tab styling */
+.tab {
+flex-shrink: 0;
+max-width: 133px;
+padding: 8px 16px;
+border-radius: 20px;
+border: 1px solid #ccc;
+background-color: white;
+cursor: pointer;
+z-index: 2;
+text-align: center;
+}
+
+/* Active tab styling - blue background */
+.tab.active {
+background-color: #1e40af;
+color: white;
+border-color: #1e40af;
+}
+
+/* HDPE data container - two column layout */
+.hdpe-data {
+display: flex;
+justify-content: space-around;
+column-gap: 56px;
+}
+
+/* Text content column in HDPE data */
+.text-content {
+display: flex;
+flex-direction: column;
+row-gap: 16px;
+flex: 1;
+justify-content: center;
+}
+
+/* Heading styling in HDPE data */
+.text-content h4 {
+font-family: "Urbanist", sans-serif;
+font-weight: 600;
+font-size: 28px;
+line-height: 160%;
+letter-spacing: -0.6%;
+color: #0D0D0D;
+}
+
+/* Paragraph styling in HDPE data */
+.text-content p{
+font-weight: 400;
+font-size: 18px;
+line-height: 160%;
+letter-spacing: -0.6%;
+}
+
+/* List styling in text content */
+.text-content ul {
+list-style: none;
+padding-left: 1rem;
+}
+
+/* ========================================
+IMAGE SECTION & NAVIGATION
+======================================== */
+/* Image section container - takes up half width in flex layout */
+.image-section {
+position: relative;
+flex: 1;
+}
+
+/* Product/step image styling in image section */
+.image-section #stepImage {
+width: 100%;
+border-radius: 16px;
+object-fit: cover;
+}
+
+/* Navigation button styling for image carousel */
+.nav-btn {
+position: absolute;
+top: 50%;
+transform: translateY(-50%) !important;
+background: white;
+border-radius: 50%;
+border: 1px solid #ccc;
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+}
+
+/* Icon sizing in navigation buttons */
+.nav-btn img{
+width: 24px;
+height: 24px;
+object-fit: contain;
+}
+
+/* Left navigation button positioning */
+.nav-btn.left {
+left: 10px;
+}
+
+/* Right navigation button positioning */
+.nav-btn.right {
+right: 10px;
+}
+
+/* ========================================
+CENTER ALIGNED HEADING SECTION
+======================================== */
+/* Center aligned heading container */
+.center-heading{
+display: flex;
+align-items: center;
+flex-direction: column;
+text-align: justify;
+row-gap: 20px;
+}
+
+/* Large center heading text */
+.center-heading h3{
+font-family: "Urbanist", sans-serif;
+font-weight: 700;
+font-size: 44px;
+line-height: 120%;
+letter-spacing: 0px;
+text-align: center;
+max-width: 800px;
+}
+
+/* Center heading paragraph text */
+.center-heading p{
+font-weight: 400;
+font-size: 18px;
+color: #4D545C;
+line-height: 160%;
+letter-spacing: 0%;
+text-align: center;
+max-width: 800px;
+}
+
+/* ========================================
+HDPE CONTENT & TESTIMONIAL CARDS
+======================================== */
+/* Container for HDPE section content */
+.hdpe-content{
+display: flex;
+flex-direction: column;
+align-items: center;
+row-gap: 56px;
+}
+
+/* HDPE tab card styling - white background with shadow */
+.hdpe-tab{
+padding: 32px;
+background-color: #FFFFFF;
+border: 1.25px solid #CFD1D4;
+box-shadow: 0px 16px 32px -12px #585C5F1A;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+row-gap: 32px;
+}
+
+/* Testimonial card styling - light gray background */
+.testimonial-card{
+background: #F7F8F9;
+box-shadow: 0px 2px 4px 0px #1B1C1D0A;
+border-radius: 24px;
+width: 420px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+gap: 12px;
+padding: 32px 24px;
+position: relative;
+overflow: hidden;
+border: 1.5px solid #E1E3E8;
+}
+
+/* Quote icon styling in testimonial */
+.quote-icon {
+margin-bottom: 32px;
+}
+
+/* Testimonial title/quote heading */
+.testimonial-title {
+font-family: Urbanist;
+font-weight: 600;
+font-size: 24px;
+line-height: 120%;
+letter-spacing: 0px;
+color: #0D0D0D;
+}
+
+/* Testimonial body text */
+.testimonial-text {
+font-family: Inter;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+color: #535A61;
+}
+
+/* Footer section for testimonial with author info */
+.testimonial-footer {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-top: 64px;
+}
+
+/* Avatar placeholder circle */
+.avatar-placeholder {
+width: 48px;
+height: 48px;
+background-color: #E1E3E8;
+border-radius: 800px;
+}
+
+/* Author name styling in testimonial footer */
+.name p{
+font-family: Inter;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0px;
+color:#0D0D0D;
+}
+
+/* Author designation styling */
+.designation label{
+font-weight: 400;
+font-style: Regular;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 0px;
+color:#535A61;
+}
+
+/* Container for author name and title */
+.testimonial-headings{
+display: flex;
+gap: 16px;
+}
+
+/* Flex wrapper for author name and designation */
+.name-tag{
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+
+/* Remove border from testimonies fold container */
+.testemonies .fold-container{
+border-bottom: none;
+}
+
+/* Add border to carousel section in testimonies */
+.testemonies .carousel-section{
+border-bottom: 1px solid #E1E3E8
+}
+
+/* Container for all testimony content */
+.testimony-content{
+display: flex;
+flex-direction: column;
+gap: 56px;
+}
+
+/* ========================================
+PIPING & PORTFOLIO SECTIONS
+======================================== */
+/* Container for piping product content */
+.piping-content{
+display: flex;
+gap: 56px;
+flex-direction: column;
+}
+
+/* Portfolio cards container */
+.portfolio-cards {
+display: flex;
+gap: 20px;
+justify-content: center;
+}
+
+/* Main product image sizing */
+.main-image-container img{
+max-height: 570px;
+max-width: 570px;
+}
+
+/* Portfolio card styling */
+.portfolio-cards .card {
+background: white;
+border-radius: 16px;
+padding: 24px;
+box-shadow: 0 0 0 1px #e5e7eb;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+gap: 56px;
+max-width: 704px;
+min-width: 304px;
+}
+
+/* Portfolio card title */
+.portfolio-cards .card-title {
+font-family: 'Urbanist', sans-serif;
+font-weight: 600;
+font-size: 28px;
+line-height: 120%;
+letter-spacing: 0px;
+}
+
+/* Portfolio card description text */
+.portfolio-cards .card-text {
+font-family: 'Inter', sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.006em;
+color: #4b5563;
+}
+
+/* Portfolio card image */
+.portfolio-cards .card-image {
+width: 100%;
+border-radius: 16px;
+object-fit: cover;
+}
+
+/* Portfolio card button styling */
+.portfolio-cards .card-button {
+background-color: #F4F5F9;
+border: 1px solid #2B39903D;
+color: #2B3990;
+outline: inherit;
+padding: 10px 0px; 
+border-radius: 12px;
+font-family: 'Inter', sans-serif;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+/* Card heading wrapper */
+.card-heading{
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+/* Image footer section in cards */
+.img-footer{
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+/* Highlight span text in headings */
+h3 span{
+color: #2B3990;
+}
+
+/* Blue button spacing in piping content */
+.piping-content .blue-button{
+display: flex;
+gap: 8px;
+padding: 10px 16px;
+}
+
+/* ========================================
+RESOURCES SECTION STYLES
+======================================== */
+/* Container for resources section content */
+.resources-content{
+display: flex;
+flex-direction: column;
+gap: 56px;
+}
+
+/* Individual resource item tab */
+.resources-tab{
+display: flex;
+flex-direction: column;
+gap:16px;
+padding: 20px;
+background-color: #FFFFFF;
+border: 1px solid  #CFD1D4;
+border-radius: 10px;
+}
+
+/* Flex items within resource tab for spacing */
+.resources-tab > *{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+flex-wrap: wrap
+}
+
+/* Resource title text styling */
+.resources-tab p{
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+color: #0D0D0D;
+}
+
+/* Resource link styling */
+.resources-tab a{
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+display: flex;
+flex-direction: row;
+gap: 8px;
+color: #2B3990;
+text-decoration: none;
+}
+
+/* Filter for resource link icons - blue tint */
+.resources-tab img{
+filter: brightness(0) saturate(100%) invert(21%) sepia(35%) saturate(2689%) hue-rotate(213deg) brightness(94%) contrast(102%);
+}
+
+/* ========================================
+CONTACT SECTION STYLES
+======================================== */
+/* Contact section with background texture */
+.contact-us{
+background-image: url("./assets/img/NoiseTexture.png");
+}
+
+/* Contact tab card - blue gradient background */
+.contact-tab {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: center;
+gap:64px;
+background: linear-gradient(0deg, #2B3990, #2B3990),
+linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+box-shadow: 0px 16px 40px -8px #585C5F29;
+padding: 56px;
+border-radius: 32px;
+}
+
+/* Contact text content with border separator */
+.contact-tab .text-content{
+padding-bottom: 40px;
+border-bottom: 1.5px solid #FFFFFF33;
+}
+
+/* Contact heading in white */
+.contact-tab .text-content h2{
+font-family: Urbanist;
+font-weight: 700;
+font-size: 48px;
+line-height: 120%;
+letter-spacing: 0px;
+color: #FFFFFF;
+}
+
+/* Contact description text - semi-transparent white */
+.contact-tab .text-content p{
+font-weight: 400;
+font-style: Regular;
+font-size: 18px;
+color: #FFFFFFCC;
+line-height: 160%;
+letter-spacing: -0.6%;
+}
+
+/* Left column of contact section */
+.text-left{
+flex: 2;
+max-width: 650px;
+}
+
+/* Contact form card styling - light background */
+.contact-form-card{
+background-color: #F7F8F9;
+border-radius: 24px;
+flex: 1;
+display: flex;
+flex-direction: column;
+gap:16px;
+padding: 32px;
+}
+
+/* Contact form wrapper */
+.contact-form{
+display: flex;
+flex-direction: column;
+gap:12px;
+}
+
+/* Dark button styling for contact form */
+.black-button{
+outline: inherit;
+background-color:  #262A2E;
+color:white;
+border-radius: 10px;
+border: none;
+}
+
+/* Contact info text styling */
+.contact-info{
+font-family: Inter;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: -0.6%;
+color:#FFFFFFCC;
+padding-top: 12px;
+}
+
+/* Contact info links */
+.contact-info a{
+font-weight: 700;
+color: white;
+text-decoration: none;
+}
+
+/* Email link with underline */
+.contact-info .mail{
+font-weight: 700;
+text-decoration: underline;
+text-decoration-style: solid;
+text-decoration-thickness: 0%;
+text-decoration-skip-ink: auto;
+color: white;
+}
+
+/* ========================================
+PHONE INPUT GROUP STYLES
+======================================== */
+/* Container for phone select and input */
+.phone-group {
+display: flex;
+}
+
+/* Country code select styling */
+.phone-group select {
+min-width: 65px;
+padding: 10px;
+border: 1px solid #E1E3E8;
+border-radius: 8px;
+font-size: 14px;
+font-family: inherit;
+background-color: white;
+appearance: none;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+background-image: url("assets/icons/drop-down.svg");
+background-repeat: no-repeat;
+background-position: right 10px center;
+background-size: 10px;
+border-right: 0;
+}
+
+/* Phone number input field */
+.phone-group input {
+flex: 1;
+padding: 10px;
+border: 1px solid #E1E3E8;
+border-radius: 8px;
+font-size: 14px;
+font-family: inherit;
+box-sizing: border-box;
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+}
+
+/* Select option styling */
+.phone-group select option {
+padding: 8px;
+font-size: 14px;
+color: #1f2937;
+background-color: #fff;
+}
+
+/* Input placeholder text styling */
+form input::placeholder {
+color: #9ca3af;
+font-style: normal;
+}
+
+/* Form input text color override */
+form input{
+color: #0D0D0D !important;
+}
+
+/* Catalogue text max width constraint */
+.catalogue-text{
+max-width: 365px;
+}
+
+/* ========================================
+FOOTER SECTION STYLES
+======================================== */
+/* Main footer container */
+.footer {
+font-family: 'Inter', sans-serif;
+color: #1f2937;
+border-top: 1px solid #e5e7eb;
+}
+
+/* Footer top grid layout - auto-fit columns */
+.footer-top {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 40px;
+margin-bottom: 40px;
+margin-top: 60px;
+}
+
+/* Footer column heading styling */
+.footer-col h4 {
+font-weight: 600;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: -0.6%;
+margin-bottom: 16px;
+color: #0D0D0D;
+}
+
+/* Footer column list styling */
+.footer-col ul {
+list-style: none;
+padding: 0;
+}
+
+/* Footer list item spacing */
+.footer-col ul li {
+margin-bottom: 16px;
+}
+
+/* Footer link styling */
+.footer-col ul li a {
+text-decoration: none;
+color: #4b5563;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: -0.6%;
+}
+
+/* Footer link hover effect */
+.footer-col ul li a:hover {
+color: #0D0D0D;
+}
+
+/* Contact footer column with border separator */
+.footer-col.contact  ul{
+padding-bottom: 8px;
+border-bottom: 1px solid #E1E3E8;
+}
+
+/* Contact footer list items with icons */
+.footer-col.contact ul li {
+display: flex;
+align-items: start;
+gap: 8px;
+font-weight: 400;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: -0.6%;
+color: #535A61;
+}
+
+/* Social media icons container */
+.social-icons {
+display: flex;
+gap: 16px;
+margin-top: 24px;
+}
+
+/* Social icon images sizing */
+.social-icons a img {
+width: 16px;
+height: 16px;
+}
+
+/* Footer bottom section with responsive layout */
+.footer-bottom {
+border-top: 1px solid #e5e7eb;
+padding-left: 180px;
+padding-right: 180px;
+padding-top:12px;
+padding-bottom:12px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+align-items: center;
+text-align: center;
+font-size: 14px;
+background-color: #FFFFFF;
+}
+
+/* Footer links container */
+.footer-links {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+}
+
+/* Footer link styling */
+.footer-links a {
+color: #4b5563;
+text-decoration: none;
+}
+
+/* Footer link hover effect */
+.footer-links a:hover {
+color: #1d4ed8;
+}
+
+/* Responsive footer bottom for larger screens */
+@media (min-width: 768px) {
+.footer-bottom {
+flex-direction: row;
+justify-content: space-between;
+text-align: left;
+}
+}
+
+/* ========================================
+GLOBAL BUTTON INTERACTIONS
+======================================== */
+/* Button active/click state - scale down effect */
+button:active {
+transform: scale(0.97); 
+background-color: #111827; 
+}
+
+/* ========================================
+FEATURE CARDS SECTION
+======================================== */
+/* Container for feature cards - flexible grid layout */
+.features-container {
+display: flex;
+flex-wrap: wrap;
+gap: 24px;
+justify-content: space-between;
+}
+
+/* Individual feature card styling */
+.feature-card {
+background-color: #fff;
+border: 1px solid #CFD1D4;
+border-radius: 16px;
+flex: 1 1 calc(33.33% - 20px);
+min-width: 280px;
+padding: 20px;
+box-sizing: border-box;
+transition: box-shadow 0.3s ease;
+}
+
+/* Feature card hover effect - shadow glow */
+.feature-card:hover {
+box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Feature card icon sizing */
+.feature-icon img {
+width: 24px;
+height: 24px;
+margin-bottom: 10px;
+}
+
+/* Feature card data container */
+.feature-data{
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+/* Feature card title styling */
+.feature-title {
+font-family: Urbanist;
+font-weight: 600; 
+font-size: 20px;
+line-height: 120%;
+letter-spacing: 0px;
+color: #0D0D0D;
+}
+
+/* Feature card description text */
+.feature-description {
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+color: #535A61;
+}
+
+/* Tablet responsive - stack feature cards */
+@media (max-width: 768px) {
+.feature-card {
+flex: 1 1 100%;
+}
+}
+
+/* ========================================
+PRODUCT GALLERY & IMAGE STYLES
+======================================== */
+/* Product gallery container - vertical flex */
+.product-gallery {
+display: flex;
+flex-direction: column;
+gap: 20px;
+align-items: center;
+flex: 1;
+}
+
+/* Main product image container */
+.main-image-container {
+position: relative;
+}
+
+/* Large product image with border and shadow */
+.main-image-container img {
+border-radius: 24px;
+border: 3px solid #FFFFFF;
+box-shadow: 0px 20px 40px 20px #585C5F33;
+}
+
+/* Image magnifier glass overlay - hidden by default */
+#magnifier {
+display: none;
+position: absolute;
+width: 350px;
+height: 350px;
+margin-left: 10rem;
+border-radius: 12px;
+border-width: 2px;
+border: 2px solid #ccc;
+background-repeat: no-repeat;
+background-size: 200%;
+pointer-events: none;
+z-index: 10;
+box-shadow: 0px 20px 40px -8px #585C5F33;
+}
+
+/* Thumbnail carousel for product image selection */
+.thumbnail-carousel {
+display: flex;
+gap: 20px;
+overflow-x: auto;
+}
+
+/* Individual thumbnail image styling */
+.thumbnail-carousel img {
+width: 80px;
+height: 80px;
+border-radius: 8px;
+border: 1px solid  #CFD1D4;
+object-fit: cover;
+cursor: pointer;
+transition: transform 0.3s;
+}
+
+/* ========================================
+MAGNIFIER CURSOR STYLING
+======================================== */
+/* Hide default cursor inside main image container */
+.main-image-container {
+cursor: none;
+position: relative;
+}
+
+/* Custom magnifier cursor square - hidden by default */
+#magnifier-cursor {
+position: absolute;
+width: 124px;
+height: 124px;  
+padding: 46px;
+border: 1px solid #E1E3E8;
+pointer-events: none;
+display: none;
+z-index: 10;
+background-color: #5252524D;
+filter: blur(0.4px);
+}
+
+/* Magnifier cursor pseudo-element - custom icon */
+#magnifier-cursor::before{
+background-image:  url('assets/icons/cursor.svg');
+display: inline-block;
+padding: 35px;
+transform: translate(50%, 50%);
+content:"";
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+
+/* ========================================
+PRODUCT DETAILS SECTION
+======================================== */
+
+/* Product details container - flex layout */
+.product-details{
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+align-items: center;
+}
+
+/* Product name heading */
+.product-details h1{
+font-family: Urbanist;
+font-weight: 700;
+font-size: 24px;
+line-height: 140%;
+letter-spacing: -0.6%;
+color:#0D0D0D;
+}
+
+/* Product subtitle heading */
+.product-details h3{
+font-family: Urbanist;
+font-weight: 500;
+font-size: 20px;
+line-height: 140%;
+letter-spacing: 0px;
+color: #111827;
+}
+
+/* Contact form card heading */
+.contact-form-card h3{
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.6%;
+}
+
+/* Product header section styling */
+.product-header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: solid 1px #CFD1D4;
+background-color: #F7F8F9;
+flex-wrap: wrap;
+padding: 20px;
+border-radius: 10px;
+row-gap: 20px;
+}
+
+/* ========================================
+STICKY HEADER STYLING
+======================================== */
+/* Sticky header - fixed position at top, hidden by default */
+.sticky-header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 1000;
+transform: translateY(-100%);
+opacity: 0;
+transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+pointer-events: none;
+}
+
+/* Visible state for sticky header - fade in and slide down */
+.sticky-header.visible {
+transform: translateY(0);
+opacity: 1;
+pointer-events: auto;
+}
+
+/* Hidden state utility class */
+.hidden {
+opacity: 0;
+transform: translateY(-100%);
+pointer-events: none;
+}
+
+/* Sticky header catalogue section styling */
+.sticky-header .catalogue-section{
+background-color: #FFFFFF;
+padding: 26px 40px;
+border-radius: 0;
+}
+
+/* Sticky header text content */
+.sticky-header .catalogue-text{
+max-width: max-content;
+}
+
+/* ========================================
+RESPONSIVE / MEDIA QUERIES
+======================================== */
+/* Tablet responsive - large screens (1200px) */
+@media (max-width: 1200px) {
+/* Stack portfolio cards vertically */
+.portfolio-cards{
+flex-wrap: wrap;
+}
+
+/* Scale down tabs for smaller space */
+.tabs{
+transform: scale(0.8) translate(-20px, 10px);
+}
+
+/* Product image with border */
+.image-section #stepImage {
+border-radius: 16px;
+border: 3px solid #FFFFFF
+}
+
+/* Mobile tab reset for smaller layouts */
+.hdpe-tab-mobile .tabs{
+margin-top: 24px;
+transform: none
+}
+
+/* Scale down HDPE tab content */
+.hdpe-tab {
+transform: scale(0.8)
+}
+}
+
+/* Mobile HDPE tab for tablet screens */
+.hdpe-tab-mobile{
+padding: 32px;
+display: none;
+background-color: white;
+border-radius: 20px;
+}
+
+/* Mobile HDPE button styling */
+.hdpe-tab-mobile .blue-button{
+background: linear-gradient(0deg, #2B3990, #2B3990),
+linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12));
+box-shadow: 0px 1px 2px 0px #0000000D;
+padding: 8px 16px;
+border-radius: 32px;
+margin-right: auto;
+}
+
+/* Mobile HDPE data layout */
+.hdpe-tab-mobile .hdpe-data{
+display: flex;
+flex-direction: column;
+gap:16px
+}
+
+/* Mobile responsive - 800px and below */
+@media (max-width: 800px) {
+/* Hide desktop HDPE tab */
+.hdpe-tab{
+display: none;
+}
+
+/* Show mobile HDPE tab */
+.hdpe-tab-mobile{
+display: block;
+}
+
+/* Form layout adjustments */
+.catalogue-form{
+flex-direction: row;
+width: 100%;
+}
+.catalogue-form input{
+flex:2
+}
+.catalogue-form button{
+flex:1
+}
+
+}
+
+/* Mobile responsive - 900px and below */
+@media (max-width: 900px) {
+/* Reverse hero section flow on mobile */
+.hero-section {
+flex-direction: column-reverse;
+}
+}
+
+/* Show menu content by default */
+.menu-content{
+display: block;
+}
+
+/* Mobile responsive - small phones (500px and below */
+@media (max-width: 500px) {
+/* Hide menu on very small screens */
+.menu-content{
+display: none;
+}
+
+/* Thumbnail carousel flex sizing */
+.thumbnail-carousel{
+flex: 0.2;
+}
+
+/* Catalogue text flex sizing */
+.catalogue-text{
+flex: 1;
+}
+
+/* Mobile thumbnail image sizing */
+.thumbnail-carousel img {
+width: 68px;
+height: 69px;
+}
+
+/* Smaller heading on mobile */
+.quote-details h1 {
+font-size: 36px;
+}
+
+/* Product image sizing for mobile */
+.main-image-container img {
+width: 320px;
+height: 320px;
+}
+
+/* Button image sizing in product container */
+.main-image-container button img{
+width: auto;
+height: auto;
+}
+
+/* Catalogue section layout on mobile */
+.catalogue-section {
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+
+/* Hide button in product header on mobile */
+.product-header .blue-button{
+display: none;
+}
+
+/* Reduced padding on contact tab for mobile */
+.contact-tab {
+padding: 24px;
+}
+
+/* Bottom border for resource tab items */
+.resources-tab > *{
+border-bottom: 1px solid  #E1E3E8;
+}
+
+/* Remove border from last resource item */
+.resources-tab > *:last-child{
+border-bottom: none
+}
+
+/* Smaller contact heading on mobile */
+.contact-tab .text-content h2 {
+font-size: 36px;
+}
+
+/* Full width quote detail badges */
+.quote-tab-details div{
+width: 100%;
+}
+
+/* Constrained max width for product image container */
+.main-image-container{
+max-width: 300px;
+}
+
+/* Full width hero buttons */
+.hero-button button {
+width: 100%;
+}
+
+/* Reduced padding for contact form card */
+.contact-form-card {
+padding: 20px;
+}
+
+/* Constrained width for form inputs */
+.contact-form-card input{
+max-width: 137px;
+}
+
+/* Constrained width for phone input */
+.contact-form-card .phone-group input{
+min-width: 137px;
+}
+
+/* Smaller center heading on mobile */
+.common-heading h3 {
+font-size: 36px;
+}
+
+/* Column layout for catalogue form on mobile */
+.catalogue-form{
+flex-direction: column;
+min-width: auto;
+}
+
+/* Hide button in product details on mobile */
+.product-details .blue-button{
+display: none;
+}
+}
+
+
+/* ========================================
+MODAL / DIALOG POPUP STYLES
+======================================== */
+
+/* Modal overlay - hidden by default */
+.modal {
+display: none;
+position: fixed;
+z-index: 1000;
+left: 0;
+top: 0;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+
+/* Close button for modal - positioned in top right */
+.close {
+position: absolute;
+top: 18px;
+right: 16px;
+font-size: 16px;
+cursor: pointer;
+color: #6B7280;
+padding: 6px;
+border-radius: 6px;
+border: solid 1px #E5E7EB;
+}
+
+/* Modal container - white card with flex layout */
+.modal-container{
+display: flex;
+border-bottom: 1px solid #E5E7EB;
+background-color: #FFFF;
+border-radius: 12px;
+overflow: clip;
+width: 550px;
+flex-direction: column;
+gap: 20px;
+}
+
+/* Modal content area - white background */
+.modal-content{
+padding: 15px 24px;
+}
+
+/* Modal footer - light gray background */
+.modal-footer{
+padding: 15px 25px;
+border-top: 1px solid #E1E3E8;
+}
+
+/* Modal header - with border separator */
+.modal-header{
+border-bottom: 1px solid #E1E3E8;
+padding: 24px 15px;
+position: relative;
+}
+
+/* Header and footer styling - light gray background with flex */
+.modal-header,.modal-footer{
+background-color: #F9FAFB;
+display: flex;
+}
+
+/* Modal content background */
+.modal-content{
+background-color: #FFF;
+}
+
+/* Modal footer button - right aligned */
+.modal-footer button{
+margin-left: auto;
+}
+
+/* Modal header heading styling */
+.modal-header h2{
+font-family: Inter;
+font-weight: 500;
+font-style: Medium;
+font-size: 18px;
+line-height: 140%;
+letter-spacing: -1%;
+}
