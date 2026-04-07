@@ -78,12 +78,12 @@
       <div class="hero-section">
         <div class="product-gallery">
           <div class="main-image-container" onmousemove="magnify(event)" onmouseleave="hideZoom()">
-            <button  onclick="prevImage()"  id="prevBtn" class="circular-button nav-btn left" >
-              <img src="assets/icons/left-nav-arrow.svg" alt="Icon" />
+            <button type="button" onclick="heroPrevImage()" id="heroPrevBtn" class="circular-button nav-btn left" >
+              <img src="assets/icons/left-nav-arrow.svg" alt="" />
             </button>
             
-            <button id="nextBtn" onclick="nextImage()" class="circular-button nav-btn right">
-              <img src="assets/icons/right-nav-arrow.svg" alt="Icon"   />
+            <button type="button" id="heroNextBtn" onclick="heroNextImage()" class="circular-button nav-btn right">
+              <img src="assets/icons/right-nav-arrow.svg" alt=""   />
             </button>
             
             <img id="mainImage" src="assets/img/fishnet.jpg" alt="Main Product Image" />
@@ -232,9 +232,8 @@
       </div>
       <div class="tech-download">
 
-        <button class="outline-button"onclick="openingModal()" >
-        <img src="assets/icons/download.svg" alt="Download button icon">
-
+        <button type="button" class="outline-button" onclick="openingModal()">
+        <img src="assets/icons/download.svg" alt="" width="20" height="20" />
 <span>Download Full Technical Datasheet</span></button>
       </div>
     </div>
@@ -259,7 +258,7 @@
       </div>
       
     <div class="tech-download">
-      <button onclick="openModal()" class="blue-button">
+      <button type="button" onclick="openModal()" class="blue-button">
 <span>Request a Quote</span></button>
     </div>
   </div>
@@ -357,13 +356,13 @@
         <p>From technical textiles to packaging materials, our precision-engineered machinery delivers superior performance across diverse applications.</p>
        </div>
        </div>
-       <div class="circular-button-nav">
-        <button  id="prevBtn" class="circular-button" disabled>
-          <img src="assets/icons/left-nav-arrow.svg" alt="Icon" />
+       <div class="circular-button-nav" aria-label="Carousel controls">
+        <button type="button" id="carouselPrevBtn" class="circular-button" disabled aria-label="Previous slide">
+          <img src="assets/icons/left-nav-arrow.svg" alt="" />
         </button>
         
-        <button id="nextBtn" class="circular-button">
-          <img src="assets/icons/right-nav-arrow.svg" alt="Icon" />
+        <button type="button" id="carouselNextBtn" class="circular-button" aria-label="Next slide">
+          <img src="assets/icons/right-nav-arrow.svg" alt="" />
         </button>
         
       </div>
@@ -527,12 +526,12 @@
             <!-- <div class="nav-btn left"">&#8592;</div>
             <div class="nav-btn right" >&#8594;</div> -->
 
-              <button  onclick="prevImage()"  id="prevBtn" class="circular-button nav-btn left" >
-                <img src="assets/icons/left-nav-arrow.svg" alt="Icon" />
+              <button type="button" id="hdpePrevBtn" class="circular-button nav-btn left" >
+                <img src="assets/icons/left-nav-arrow.svg" alt="" />
               </button>
               
-              <button id="nextBtn" onclick="nextImage()" class="circular-button nav-btn right">
-                <img src="assets/icons/right-nav-arrow.svg" alt="Icon" />
+              <button type="button" id="hdpeNextBtn" class="circular-button nav-btn right">
+                <img src="assets/icons/right-nav-arrow.svg" alt="" />
               </button>
                  
           </div>
@@ -546,7 +545,7 @@
           <div class="blue-button">
             <span>Step 1/8: Raw Material</span>
           </div>
-          <div class="text-content" id="textContent">
+          <div class="text-content">
             <h4>High-Grade Raw Material Selection</h4>
             <p>Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity.</p>
            
@@ -563,16 +562,16 @@
 
           </div>
           <div class="image-section">
-            <img id="stepImage" src="assets/img/fishnet-carousel.jpg"  alt="Step Image">
+            <img src="assets/img/fishnet-carousel.jpg"  alt="Step Image">
             <!-- <div class="nav-btn left"">&#8592;</div>
             <div class="nav-btn right" >&#8594;</div> -->
    
         </div>
 
         <div class="tabs">
-          <div class="tab" >Previous</div>
-          <div class="tab"">Next</div>
-        </tab>
+          <div class="tab">Previous</div>
+          <div class="tab">Next</div>
+        </div>
         
       </div>
 
@@ -650,9 +649,9 @@
           </div>
          <div>
          
-            <button class="blue-button" type="submit">
+            <button class="blue-button" type="button" onclick="openModal()">
               <img src="assets/icons/call-btn.svg" alt="Call Button" class="call-btn" />
-             <span> Request Catalogue</span></button>
+             <span> Talk to an Expert</span></button>
             </div>
         </div>
         
@@ -843,11 +842,11 @@
   </div></div>
 </footer>
 
-<div id="callbackModal" class="modal">
+<div id="callbackModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="callbackModalTitle">
   <div class="modal-container">
   <div class="modal-header">
-    <h2>Request a call back</h2>
-    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="callbackModalTitle">Request a call back</h2>
+    <button type="button" class="close" onclick="closeModal()" aria-label="Close">&times;</button>
     </div>
   <div class="modal-content">
     <form class="contact-form" id="callbackForm">
@@ -864,19 +863,19 @@
     </form>
   </div>
   <div class="modal-footer"> 
-    <button class="blue-button"> Submit Form</button>
+    <button type="button" class="blue-button">Submit Form</button>
   </div></div>
 </div>
 
-<div id="callbackModal2" class="modal">
+<div id="callbackModal2" class="modal" role="dialog" aria-modal="true" aria-labelledby="callbackModal2Title">
   <div class="modal-container">
   <div class="modal-header">
-    <h2>Request a call back</h2>
-    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="callbackModal2Title">Request a call back</h2>
+    <button type="button" class="close" onclick="closeModal()" aria-label="Close">&times;</button>
     </div>
   <div class="modal-content">
 
-    <form class="contact-form" id="callbackForm">
+    <form class="contact-form" id="callbackFormBrochure">
  
         <label>Your Email *</label>
         <input type="email" placeholder="Email Address" required />
@@ -886,7 +885,7 @@
     </form>
   </div>
   <div class="modal-footer"> 
-    <button class="blue-button" disabled> Download Brochure</button>
+    <button type="button" class="blue-button" disabled>Download Brochure</button>
   </div></div>
 </div>
 

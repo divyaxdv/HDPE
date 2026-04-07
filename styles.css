@@ -24,7 +24,7 @@ padding: 100px !important;
 padding: 80px !important;
 }
 .catalogue-text {
-max-width: 330px !important;
+max-width: min(100%, 720px) !important;
 }
 
 }
@@ -546,10 +546,30 @@ justify-content: center;
 
 /* Download button in tech section - white border with white text */
 .tech-download button {
-padding: 14px 20px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+flex-wrap: nowrap;
+white-space: nowrap;
+padding: 14px 24px;
 border: 1px solid white;
 color: white;
 filter: none;
+box-sizing: border-box;
+}
+
+.tech-download button span {
+white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+.tech-download button {
+padding: 12px 16px;
+font-size: 13px;
+letter-spacing: -0.02em;
+gap: 8px;
+}
 }
 
 /* ========================================
@@ -591,22 +611,48 @@ letter-spacing: -0.006em;
 /* ========================================
 DARK TECH SPEC SECTION VARIANT
 ======================================== */
-/* Heading color override for dark tech spec section */
+/* Heading color + heavier weight for “Built to Last…” section */
 .tech-spec-2 h3{
-color: #0D0D0D
+color: #0D0D0D;
+font-weight: 700;
+letter-spacing: -0.02em;
 }
 
-/* Paragraph color override for dark tech spec section */
-.tech-spec-2 p{
-color: #6A7077
+/* Paragraph under “Built to Last…” — lighter weight than default body copy */
+.tech-spec-2 p {
+color: #6a7077;
+font-weight: 300;
+}
+
+/* “Request a Quote” CTA — larger pill; hover = lighter blue only (no scale / shadow / border) */
+.tech-spec-2 .tech-download .blue-button {
+padding: 16px 36px;
+font-size: 16px;
+font-weight: 500;
+border-radius: 12px;
+border: none;
+cursor: pointer;
+box-shadow: none;
+transition: background-color 0.22s ease;
+}
+
+.tech-spec-2 .tech-download .blue-button:hover {
+background-color: #4a5fc4;
+color: #ffffff;
+}
+
+.tech-spec-2 .tech-download .blue-button:active {
+background-color: #3d4fa8;
 }
 
 /* ========================================
 FAQ SECTION STYLES
 ======================================== */
-/* Override heading color for FAQ section */
-.faq .common-heading h3{
+/* FAQ section heading — heavier weight */
+.faq .common-heading h3 {
 color: #111827;
+font-weight: 700;
+letter-spacing: -0.02em;
 }
 
 /* Highlight color for FAQ section headings */
@@ -624,26 +670,29 @@ justify-content: space-between;
 align-items: center;
 border: solid 1px #CFD1D4;
 background-color: #F7F8F9;
-flex-wrap: wrap; /* Makes it responsive */
-padding: 20px;
+flex-wrap: wrap;
+padding: 20px 24px;
 border-radius: 10px;
 row-gap: 20px;
+column-gap: 40px;
 }
 
-/* Text content area in catalogue section */
+/* Text content area — grows into open space so the headline can stay one line */
 .catalogue-text{
 display: flex;
 flex-direction: column;
 row-gap: 12px;
+flex: 1 1 auto;
+min-width: 0;
 }
 
 /* Catalogue section heading styling */
 .catalogue-section h3{
 font-family: "Urbanist", sans-serif;
-font-weight: 400;
+font-weight: 600;
 font-size: 26px;
 line-height: 120%;
-letter-spacing: 0px;
+letter-spacing: -0.02em;
 }
 
 /* Catalogue section description text */
@@ -658,7 +707,8 @@ color: #262A2E;
 
 /* Form container in catalogue section */
 .catalogue-form{
-min-width: 360px;
+min-width: min(100%, 360px);
+flex: 0 0 auto;
 display: flex;
 flex-direction: column;
 gap: 12px;
@@ -777,14 +827,27 @@ padding-bottom: 56px;
 max-width: 640px;
 }
 
-/* Heading color for versatility section */
-.versatility-section h3{
-color: #0D0D0D;
+/* Section title — heavier weight */
+.versatility-section .carousel-header .common-heading h3 {
+color: #0d0d0d;
+font-weight: 700;
+letter-spacing: -0.02em;
 }
 
 /* Paragraph color for versatility section */
 .versatility-section p{
 color: #4D545C;
+}
+
+/* Larger nav arrows next to the title (does not affect other carousels) */
+.versatility-section .carousel-header .circular-button {
+width: 56px;
+height: 56px;
+}
+
+.versatility-section .carousel-header .circular-button img {
+width: 22px;
+height: 22px;
 }
 
 /* ========================================
@@ -1023,8 +1086,9 @@ border-color: #1e40af;
 /* HDPE data container - two column layout */
 .hdpe-data {
 display: flex;
-justify-content: space-around;
-column-gap: 56px;
+justify-content: space-between;
+align-items: stretch;
+column-gap: 40px;
 }
 
 /* Text content column in HDPE data */
@@ -1159,6 +1223,19 @@ text-align: center;
 max-width: 800px;
 }
 
+/* Bolder titles: HDPE intro + testimonials hero line */
+.advanced-hdpe-section .center-heading h3,
+.testemonies .center-heading h3 {
+font-weight: 700;
+letter-spacing: -0.02em;
+}
+
+/* Portfolio section main heading */
+.portfolio-section .center-heading h3 {
+font-weight: 700;
+letter-spacing: -0.02em;
+}
+
 /* ========================================
 HDPE CONTENT & TESTIMONIAL CARDS
 ======================================== */
@@ -1180,6 +1257,11 @@ border-radius: 20px;
 display: flex;
 flex-direction: column;
 row-gap: 32px;
+width: 100%;
+max-width: min(100%, 1040px);
+margin-left: auto;
+margin-right: auto;
+box-sizing: border-box;
 }
 
 /* Testimonial card styling - light gray background */
@@ -1323,10 +1405,10 @@ min-width: 304px;
 /* Portfolio card title */
 .portfolio-cards .card-title {
 font-family: 'Urbanist', sans-serif;
-font-weight: 400;
+font-weight: 600;
 font-size: 28px;
 line-height: 120%;
-letter-spacing: 0px;
+letter-spacing: -0.02em;
 }
 
 /* Portfolio card description text */
@@ -1394,6 +1476,12 @@ RESOURCES SECTION STYLES
 display: flex;
 flex-direction: column;
 gap: 56px;
+}
+
+/* “Resources & Downloads” — larger than default center headings (44px) */
+.resources .center-heading h3 {
+font-size: clamp(2.5rem, 4vw, 3.25rem);
+line-height: 1.15;
 }
 
 /* Individual resource item tab */
@@ -1610,11 +1698,6 @@ form input{
 color: #0D0D0D !important;
 }
 
-/* Catalogue text max width constraint */
-.catalogue-text{
-max-width: 365px;
-}
-
 /* ========================================
 FOOTER SECTION STYLES
 ======================================== */
@@ -1623,6 +1706,18 @@ FOOTER SECTION STYLES
 font-family: 'Inter', sans-serif;
 color: #1f2937;
 border-top: 1px solid #e5e7eb;
+}
+
+/* Footer top strip: logo left, tagline aligned to the right edge */
+.footer .catalogue-section {
+justify-content: space-between;
+}
+
+.footer .catalogue-section .catalogue-text {
+margin-left: auto;
+text-align: right;
+align-items: flex-end;
+flex: 0 1 auto;
 }
 
 /* Footer top grid layout - auto-fit columns */
@@ -1715,6 +1810,10 @@ align-items: center;
 text-align: center;
 font-size: 14px;
 background-color: #FFFFFF;
+}
+
+.footer-bottom p {
+font-weight: 300;
 }
 
 /* Footer links container */
@@ -2211,6 +2310,20 @@ align-items: center;
 text-align: center;
 }
 
+/* Keep footer strip horizontal: logo left, tagline right */
+.footer .catalogue-section {
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+text-align: left;
+}
+
+.footer .catalogue-section .catalogue-text {
+margin-left: auto;
+text-align: right;
+align-items: flex-end;
+}
+
 /* Hide button in product header on mobile */
 .product-header .blue-button{
 display: none;
@@ -2273,6 +2386,10 @@ min-width: 137px;
 font-size: 36px;
 }
 
+.resources .center-heading h3 {
+font-size: clamp(28px, 6vw, 36px);
+}
+
 /* Column layout for catalogue form on mobile */
 .catalogue-form{
 flex-direction: column;
@@ -2290,7 +2407,7 @@ display: none;
 MODAL / DIALOG POPUP STYLES
 ======================================== */
 
-/* Modal overlay - hidden by default */
+/* Modal overlay - hidden by default; backdrop blur on open */
 .modal {
 display: none;
 position: fixed;
@@ -2298,10 +2415,16 @@ z-index: 1000;
 left: 0;
 top: 0;
 height: 100%;
-background-color: rgba(0, 0, 0, 0.5);
+width: 100%;
+min-height: 100dvh;
+box-sizing: border-box;
+padding: 24px;
+background-color: rgba(15, 23, 42, 0.35);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
 justify-content: center;
 align-items: center;
-width: 100%;
+overflow-y: auto;
 }
 
 /* Close button for modal - positioned in top right */
@@ -2312,9 +2435,12 @@ right: 16px;
 font-size: 16px;
 cursor: pointer;
 color: #6B7280;
-padding: 6px;
+padding: 6px 10px;
+line-height: 1;
 border-radius: 6px;
 border: solid 1px #E5E7EB;
+background: #fff;
+font-family: inherit;
 }
 
 /* Modal container - white card with flex layout */
@@ -2347,9 +2473,9 @@ padding: 24px 15px;
 position: relative;
 }
 
-/* Header and footer styling - light gray background with flex */
+/* Header and footer — white card, separators only */
 .modal-header,.modal-footer{
-background-color: #F9FAFB;
+background-color: #FFFFFF;
 display: flex;
 }
 
@@ -2365,10 +2491,10 @@ margin-left: auto;
 
 /* Modal header heading styling */
 .modal-header h2{
-font-family: Inter;
-font-weight: 400;
-font-style: Medium;
+font-family: "Inter", sans-serif;
+font-weight: 600;
 font-size: 18px;
 line-height: 140%;
-letter-spacing: -1%;
+letter-spacing: -0.01em;
+color: #0D0D0D;
 }

@@ -1,55 +1,71 @@
-// Carousel setup and controls
-const track = document.getElementById("carouselTrack");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const items = document.querySelectorAll(".carousel-item");
-const wrapper = document.querySelector(".carousel-wrapper");
+// Versatility section carousel (unique IDs — was conflicting with hero / HDPE buttons)
+function initVersatilityCarousel() {
+  const track = document.getElementById("carouselTrack");
+  const prevBtn = document.getElementById("carouselPrevBtn");
+  const nextBtn = document.getElementById("carouselNextBtn");
+  const wrapper = document.querySelector(".versatility-section .carousel-wrapper");
+  const items = document.querySelectorAll(".versatility-section .carousel-item");
+  if (!track || !prevBtn || !nextBtn || !wrapper || !items.length) return;
 
-// Calculate card width including margin, and how many cards fit in viewport
-const cardWidth = items[0].offsetWidth + 16;
-let visibleCount = Math.floor(wrapper.offsetWidth / cardWidth);
-let index = 0;
+  const gap = 16;
+  const getCardWidth = () => items[0].offsetWidth + gap;
+  let visibleCount = Math.max(
+    1,
+    Math.floor(wrapper.offsetWidth / Math.max(getCardWidth(), 1))
+  );
+  let index = 0;
 
-// Enable/disable navigation buttons based on current position
-function updateButtons() {
-  prevBtn.disabled = index === 0;
-  nextBtn.disabled = index >= items.length - visibleCount;
-}
-
-// Move carousel to current index position
-function updatePosition() {
-  track.style.transform = `translateX(-${index * cardWidth}px)`;
-  updateButtons();
-}
-
-// Navigation event handlers
-nextBtn.addEventListener("click", () => {
-  if (index < items.length - visibleCount) {
-    index++;
-    updatePosition();
+  function updateButtons() {
+    const maxIndex = Math.max(0, items.length - visibleCount);
+    prevBtn.disabled = index <= 0;
+    nextBtn.disabled = index >= maxIndex;
   }
-});
 
-prevBtn.addEventListener("click", () => {
-  if (index > 0) {
-    index--;
-    updatePosition();
+  function updatePosition() {
+    const w = getCardWidth();
+    track.style.transform = `translateX(-${index * w}px)`;
+    updateButtons();
   }
-});
 
-// Handle window resize - recalculate visible cards and update position
-window.addEventListener("resize", () => {
-  visibleCount = Math.floor(wrapper.offsetWidth / cardWidth);
-  updateButtons();
+  nextBtn.addEventListener("click", () => {
+    const maxIndex = Math.max(0, items.length - visibleCount);
+    if (index < maxIndex) {
+      index++;
+      updatePosition();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (index > 0) {
+      index--;
+      updatePosition();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    visibleCount = Math.max(
+      1,
+      Math.floor(wrapper.offsetWidth / Math.max(getCardWidth(), 1))
+    );
+    const maxIndex = Math.max(0, items.length - visibleCount);
+    if (index > maxIndex) index = maxIndex;
+    updatePosition();
+  });
+
   updatePosition();
-});
+}
 
-updateButtons();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initVersatilityCarousel);
+} else {
+  initVersatilityCarousel();
+}
 
-// Tab system for manufacturing process steps
-const tabs = document.querySelectorAll(".tab");
-const textContent = document.getElementById("textContent");
-const stepImage = document.getElementById("stepImage");
+// Tab system for manufacturing process steps (desktop section only)
+const hdpeSection = document.querySelector(".advanced-hdpe-section .hdpe-tab");
+const tabs = hdpeSection ? hdpeSection.querySelectorAll(".tab[data-index]") : [];
+const textContent = hdpeSection ? hdpeSection.querySelector("#textContent") : null;
+const stepImage = hdpeSection ? hdpeSection.querySelector("#stepImage") : null;
 
 // Manufacturing process data - each step has title, description, key points, and image
 const data = [
@@ -109,12 +125,14 @@ tabs.forEach((tab) => {
     tabs.forEach((t) => t.classList.remove("active"));
     tab.classList.add("active");
     const index = parseInt(tab.getAttribute("data-index"));
+    if (Number.isNaN(index)) return;
     updateContent(index);
   });
 });
 
 // Update the content area with selected step data
 function updateContent(index) {
+  if (!textContent || !stepImage || !data[index]) return;
   const step = data[index];
   textContent.innerHTML = `
     <h4>${step.title}</h4>
@@ -131,11 +149,13 @@ let currentImage = 0;
 
 // Previous/next image navigation for the step content
 function prevImage() {
+  if (!tabs.length) return;
   currentImage = (currentImage - 1 + data.length) % data.length;
   tabs[currentImage].click();
 }
 
 function nextImage() {
+  if (!tabs.length) return;
   currentImage = (currentImage + 1) % data.length;
   tabs[currentImage].click();
 }
@@ -204,10 +224,38 @@ featuresData.forEach((feature) => {
 const mainImage = document.getElementById("mainImage");
 const magnifier = document.getElementById("magnifier");
 
+let heroGalleryIndex = 0;
+
+function heroSlideSources() {
+  const thumbs = document.querySelectorAll(
+    ".product-gallery .thumbnail-carousel img"
+  );
+  if (thumbs.length) return Array.from(thumbs).map((el) => el.src);
+  return mainImage ? [mainImage.src] : [];
+}
+
 // Switch main image and update magnifier
 function changeImage(src) {
+  if (!mainImage) return;
   mainImage.src = src;
-  magnifier.style.backgroundImage = `url(${src})`;
+  if (magnifier) magnifier.style.backgroundImage = `url(${src})`;
+  const srcs = heroSlideSources();
+  const idx = srcs.indexOf(src);
+  if (idx >= 0) heroGalleryIndex = idx;
+}
+
+function heroPrevImage() {
+  const srcs = heroSlideSources();
+  if (!mainImage || !srcs.length) return;
+  heroGalleryIndex = (heroGalleryIndex - 1 + srcs.length) % srcs.length;
+  changeImage(srcs[heroGalleryIndex]);
+}
+
+function heroNextImage() {
+  const srcs = heroSlideSources();
+  if (!mainImage || !srcs.length) return;
+  heroGalleryIndex = (heroGalleryIndex + 1) % srcs.length;
+  changeImage(srcs[heroGalleryIndex]);
 }
 
 // True when cursor is over carousel arrow buttons (no zoom there)
@@ -218,6 +266,7 @@ function isOverNavArrow(target) {
 
 // Show magnified view on mouse move
 function magnify(e) {
+  if (!mainImage) return;
   if (isOverNavArrow(e.target)) {
     hideZoom();
     return;
@@ -230,6 +279,7 @@ function magnify(e) {
   const xPercent = (x / rect.width) * 100;
   const yPercent = (y / rect.height) * 100;
 
+  if (!magnifier) return;
   magnifier.style.display = "block";
   magnifier.style.left = `${x + 20}px`;
   magnifier.style.top = `${y - 75}px`;
@@ -239,7 +289,7 @@ function magnify(e) {
 
 // Hide magnifier when mouse leaves
 function hideZoom() {
-  magnifier.style.display = "none";
+  if (magnifier) magnifier.style.display = "none";
 }
 
 // Custom cursor for zoom functionality
@@ -247,26 +297,27 @@ const magnifierCursor = document.getElementById("magnifier-cursor");
 const imageContainer = document.querySelector(".main-image-container");
 
 // Track mouse position for custom cursor (disabled over nav arrows)
-imageContainer.addEventListener("mousemove", (e) => {
-  if (isOverNavArrow(e.target)) {
+if (imageContainer && magnifierCursor) {
+  imageContainer.addEventListener("mousemove", (e) => {
+    if (isOverNavArrow(e.target)) {
+      magnifierCursor.style.display = "none";
+      hideZoom();
+      return;
+    }
+
+    const rect = imageContainer.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    magnifierCursor.style.display = "block";
+    magnifierCursor.style.left = `${x - magnifierCursor.offsetWidth / 2}px`;
+    magnifierCursor.style.top = `${y - magnifierCursor.offsetHeight / 2}px`;
+  });
+
+  imageContainer.addEventListener("mouseleave", () => {
     magnifierCursor.style.display = "none";
-    hideZoom();
-    return;
-  }
-
-  const rect = imageContainer.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  magnifierCursor.style.display = "block";
-  magnifierCursor.style.left = `${x - magnifierCursor.offsetWidth / 2}px`;
-  magnifierCursor.style.top = `${y - magnifierCursor.offsetHeight / 2}px`;
-});
-
-// Hide custom cursor when mouse leaves image area
-imageContainer.addEventListener("mouseleave", () => {
-  magnifierCursor.style.display = "none";
-});
+  });
+}
 
 // Testimonials data - customer reviews and feedback
 const testimonialsData = [
@@ -385,31 +436,39 @@ document.querySelectorAll(".faq-question").forEach((question) => {
 });
 
 function openModal() {
-  document.getElementById("callbackModal").style.display = "flex";
+  const el = document.getElementById("callbackModal");
+  if (el) el.style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
-
-function closeModal() {
-  document.getElementById("callbackModal").style.display = "none";
-}
-
-window.onclick = function (event) {
-  const modal = document.getElementById("callbackModal");
-  if (event.target === modal) {
-    closeModal();
-  }
-};
 
 function openingModal() {
-  document.getElementById("callbackModal2").style.display = "flex";
+  const el = document.getElementById("callbackModal2");
+  if (el) el.style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
-  document.getElementById("callbackModal2").style.display = "none";
+  const m1 = document.getElementById("callbackModal");
+  const m2 = document.getElementById("callbackModal2");
+  if (m1) m1.style.display = "none";
+  if (m2) m2.style.display = "none";
+  document.body.style.overflow = "";
 }
 
-window.onclick = function (event) {
-  const modal = document.getElementById("callbackModal2");
-  if (event.target === modal) {
-    closeModal();
-  }
-};
+window.addEventListener("click", function (event) {
+  const t = event.target;
+  if (t && t.id === "callbackModal") closeModal();
+  if (t && t.id === "callbackModal2") closeModal();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") closeModal();
+});
+
+// HDPE process arrows (same prev/next tab behavior — uses unique IDs)
+(function bindHdpeStepNav() {
+  const prev = document.getElementById("hdpePrevBtn");
+  const next = document.getElementById("hdpeNextBtn");
+  if (prev) prev.addEventListener("click", prevImage);
+  if (next) next.addEventListener("click", nextImage);
+})();
