@@ -67,7 +67,7 @@ margin: 0px;
 body{
 margin: 0px;
 font-family: "Inter", sans-serif;
-font-weight: 500;
+font-weight: 400;
 background-image: url("./assets/img/NoiseTexture.png");
 background-color: white;
 }
@@ -177,6 +177,18 @@ color: #4D545C !important;
 color: black !important;
 }
 
+/* Hero: softer breadcrumb (reference layout) */
+.hero-content .breadcrumb li {
+color: #6b7280 !important;
+font-size: 14px;
+font-weight: 400;
+letter-spacing: 0.01em;
+}
+
+.hero-content .breadcrumb li:last-child {
+color: #374151 !important;
+}
+
 /* ========================================
 PRODUCT/QUOTE CARD STYLES
 ======================================== */
@@ -208,31 +220,32 @@ align-items: center;
 /* Main quote/product details section - flex layout for responsive design */
 .quote-details{
 flex: 1;
+min-width: 0;
 }
 
-/* Large heading for quote/product details */
+/* Large heading for quote/product details — navy, balanced scale (image 2) */
 .quote-details h1{
 text-align: left;
 font-family: "Urbanist", sans-serif;
-font-weight: 700;
-font-size: 3.5rem;
-letter-spacing: 0px;
-line-height: 120%;
-color:#111827;
-padding-top: 16px;
+font-weight: 600;
+font-size: clamp(2.125rem, 4.2vw, 3.5rem);
+letter-spacing: -0.02em;
+line-height: 1.15;
+color: #1a2744;
+padding-top: 8px;
 }
 
 /* Container for quote/product details content */
 .quote-details-content{
 display: flex;
 flex-direction:column ;
-row-gap: 24px;
+row-gap: 28px;
 }
 
 /* Flex container for quote features list */
 .quote-features{
 display: flex;
-row-gap: 16px;
+row-gap: 22px;
 flex-direction: column;
 }
 
@@ -240,7 +253,14 @@ flex-direction: column;
 .quote-features div{
 display: flex;
 align-items: center;
-gap: 6px;
+gap: 10px;
+}
+
+.quote-features p {
+font-size: 15px;
+line-height: 1.45;
+color: #374151;
+font-weight: 400;
 }
 
 /* Icon sizing for feature items */
@@ -259,6 +279,7 @@ display:flex;
 justify-content: flex-start;
 row-gap: 16px;
 flex-direction: column;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* Quote pricing section layout */
@@ -270,7 +291,7 @@ flex-direction: column;
 
 /* Pricing label text styling */
 .quote-price span{
-font-weight: 500;
+font-weight: 400;
 font-size: 14px;
 line-height: 20px;
 letter-spacing: -0.6%;
@@ -279,12 +300,13 @@ color:#6A7077;
 
 /* Price amount heading styling */
 .quote-price h3{
-font-weight: 600;
+font-weight: 500;
 font-style: Semi Bold;
 font-size: 20px;
 line-height: 140%;
 letter-spacing: -0.6%;
 margin: 0;
+color: #111827;
 }
 
 /* Container for quote tab detail badges */
@@ -317,12 +339,27 @@ display: flex;
 /* ========================================
 HERO SECTION STYLES
 ======================================== */
+/* Hero band — light cool grey + noise (aligns with product mock) */
+section.hero-content {
+position: relative;
+overflow: hidden;
+background-color: #eef1f4;
+background-image: url("./assets/img/NoiseTexture.png");
+background-repeat: repeat;
+}
+
+section.hero-content .fold-container {
+position: relative;
+z-index: 1;
+}
+
 /* Main hero section with flex layout for responsiveness */
 .hero-section{
 display: flex;
 flex-wrap:wrap;
-gap: 3.75rem;
+gap: clamp(2rem, 4vw, 3.5rem);
 position: relative;
+align-items: stretch;
 }
 
 
@@ -331,6 +368,15 @@ position: relative;
 position:absolute;
 top: 0;
 right: 0;
+z-index: 0;
+pointer-events: none;
+opacity: 0.45;
+}
+
+.layer-blur img {
+display: block;
+max-width: min(520px, 45vw);
+height: auto;
 }
 
 /* Container for hero action buttons */
@@ -343,7 +389,7 @@ gap: 12px;
 /* Hero button text styling */
 .hero-button button{
 padding: 14px 24px;
-font-weight: 500;
+font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 letter-spacing: -0.6%;
@@ -401,8 +447,10 @@ letter-spacing: -0.6%;
 /* Flex container for company logos */
 .company-img{
 display: flex;
-column-gap: 3rem;
+flex-wrap: wrap;
+gap: 2rem 5rem;
 justify-content: center;
+align-items: center;
 }
 
 /* ========================================
@@ -435,7 +483,7 @@ color: white;
 th, td {
 padding: 12px 16px;
 font-size: 14px;
-font-weight: 500;
+font-weight: 400;
 line-height: 20px;
 letter-spacing: -0.006em;
 border-bottom: 1px solid #374151;
@@ -473,7 +521,7 @@ text-align: left;
 /* Large section heading - white text for dark backgrounds */
 .common-heading h3{
 font-family: "Urbanist", sans-serif;
-font-weight: 700;
+font-weight: 500;
 font-size: 48px;
 line-height: 120%;
 letter-spacing: 0px;
@@ -526,7 +574,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 /* Card title styling */
 .card-grid .card-title {
 font-size: 16px;
-font-weight: 600;
+font-weight: 400;
 color: #111827;
 margin-bottom: 0.5rem;
 }
@@ -592,7 +640,7 @@ row-gap: 12px;
 /* Catalogue section heading styling */
 .catalogue-section h3{
 font-family: "Urbanist", sans-serif;
-font-weight: 600;
+font-weight: 400;
 font-size: 26px;
 line-height: 120%;
 letter-spacing: 0px;
@@ -678,7 +726,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 cursor: pointer;
-font-weight: 500;
+font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 letter-spacing: -0.3px;
@@ -757,32 +805,38 @@ gap: 20px;
 padding: 16px 0;
 }
 
-/* Circular navigation button styling */
+/* Circular navigation button styling — light disc, soft shadow, charcoal icon */
 .circular-button {
-width: 68px;
-height: 68px;
+width: 48px;
+height: 48px;
 border-radius: 50%;
-border: 1px solid #CFD1D4;
-background-color: white;
-box-shadow: 0px 2px 4px 0px #1B1C1D0A;
+border: 1px solid #E8EAED;
+background-color: #F5F5F5;
+box-shadow:
+  0 1px 2px rgba(0, 0, 0, 0.06),
+  0 2px 8px rgba(0, 0, 0, 0.06);
 display: flex;
 align-items: center;
 justify-content: center;
 cursor: pointer;
-transition: box-shadow 0.2s ease, opacity 0.3s ease;
+transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease, transform 0.15s ease;
 padding: 0;
 outline: inherit;
 }
 
-/* Active state for circular buttons */
-.circular-button:active,.image-section button:active {
-transform: none; 
-background-color: #111827; 
+/* Active state — subtle press, no dark fill */
+.circular-button:active,
+.image-section button:active {
+transform: scale(0.97);
+background-color: #EEEEEE;
 }
 
 /* Hover effect for circular buttons */
 .circular-button:hover {
-box-shadow: 0px 4px 8px 0px #1b1c1d1a;
+background-color: #FAFAFA;
+box-shadow:
+  0 2px 4px rgba(0, 0, 0, 0.08),
+  0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* Disabled state for carousel buttons */
@@ -794,8 +848,8 @@ pointer-events: none;
 
 /* Icon sizing in circular buttons */
 .circular-button img {
-width: 24px;
-height: 24px;
+width: 14px;
+height: 14px;
 object-fit: contain;
 }
 
@@ -906,7 +960,7 @@ max-width: 350px;
 /* Carousel card title styling */
 .card-content h6{
 font-family: "Urbanist", sans-serif;
-font-weight: 500;
+font-weight: 400;
 font-size: 26px;
 line-height: 120%;
 letter-spacing: 0px;
@@ -985,7 +1039,7 @@ justify-content: center;
 /* Heading styling in HDPE data */
 .text-content h4 {
 font-family: "Urbanist", sans-serif;
-font-weight: 600;
+font-weight: 400;
 font-size: 28px;
 line-height: 160%;
 letter-spacing: -0.6%;
@@ -1022,26 +1076,42 @@ border-radius: 16px;
 object-fit: cover;
 }
 
-/* Navigation button styling for image carousel */
+/* Hero / image carousel arrows — white disc + dark chevron (image 2) */
 .nav-btn {
 position: absolute;
 top: 50%;
 transform: translateY(-50%) !important;
-background: white;
+background: #ffffff;
 border-radius: 50%;
-border: 1px solid #ccc;
-width: 50px;
-height: 50px;
+border: 1px solid rgba(0, 0, 0, 0.08);
+width: 44px;
+height: 44px;
+box-shadow:
+  0 1px 2px rgba(0, 0, 0, 0.06),
+  0 4px 14px rgba(15, 23, 42, 0.08);
 display: flex;
 align-items: center;
 justify-content: center;
 cursor: pointer;
+transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.nav-btn:hover {
+background: #f9fafb;
+box-shadow:
+  0 2px 6px rgba(0, 0, 0, 0.07),
+  0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.nav-btn:active {
+background: #f3f4f6 !important;
+transform: translateY(-50%) scale(0.97) !important;
 }
 
 /* Icon sizing in navigation buttons */
-.nav-btn img{
-width: 24px;
-height: 24px;
+.nav-btn img {
+width: 13px;
+height: 13px;
 object-fit: contain;
 }
 
@@ -1070,7 +1140,7 @@ row-gap: 20px;
 /* Large center heading text */
 .center-heading h3{
 font-family: "Urbanist", sans-serif;
-font-weight: 700;
+font-weight: 500;
 font-size: 44px;
 line-height: 120%;
 letter-spacing: 0px;
@@ -1136,7 +1206,7 @@ margin-bottom: 32px;
 /* Testimonial title/quote heading */
 .testimonial-title {
 font-family: Urbanist;
-font-weight: 600;
+font-weight: 400;
 font-size: 24px;
 line-height: 120%;
 letter-spacing: 0px;
@@ -1172,7 +1242,7 @@ border-radius: 800px;
 /* Author name styling in testimonial footer */
 .name p{
 font-family: Inter;
-font-weight: 600;
+font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 letter-spacing: 0px;
@@ -1236,12 +1306,6 @@ gap: 20px;
 justify-content: center;
 }
 
-/* Main product image sizing */
-.main-image-container img{
-max-height: 570px;
-max-width: 570px;
-}
-
 /* Portfolio card styling */
 .portfolio-cards .card {
 background: white;
@@ -1259,7 +1323,7 @@ min-width: 304px;
 /* Portfolio card title */
 .portfolio-cards .card-title {
 font-family: 'Urbanist', sans-serif;
-font-weight: 600;
+font-weight: 400;
 font-size: 28px;
 line-height: 120%;
 letter-spacing: 0px;
@@ -1291,7 +1355,7 @@ outline: inherit;
 padding: 10px 0px; 
 border-radius: 12px;
 font-family: 'Inter', sans-serif;
-font-weight: 500;
+font-weight: 400;
 cursor: pointer;
 transition: all 0.3s ease;
 }
@@ -1353,7 +1417,7 @@ flex-wrap: wrap
 
 /* Resource title text styling */
 .resources-tab p{
-font-weight: 500;
+font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 letter-spacing: -0.6%;
@@ -1362,7 +1426,7 @@ color: #0D0D0D;
 
 /* Resource link styling */
 .resources-tab a{
-font-weight: 600;
+font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 letter-spacing: -0.6%;
@@ -1409,7 +1473,7 @@ border-bottom: 1.5px solid #FFFFFF33;
 /* Contact heading in white */
 .contact-tab .text-content h2{
 font-family: Urbanist;
-font-weight: 700;
+font-weight: 500;
 font-size: 48px;
 line-height: 120%;
 letter-spacing: 0px;
@@ -1462,7 +1526,7 @@ border: none;
 /* Contact info text styling */
 .contact-info{
 font-family: Inter;
-font-weight: 700;
+font-weight: 500;
 font-size: 14px;
 line-height: 20px;
 letter-spacing: -0.6%;
@@ -1472,14 +1536,14 @@ padding-top: 12px;
 
 /* Contact info links */
 .contact-info a{
-font-weight: 700;
+font-weight: 500;
 color: white;
 text-decoration: none;
 }
 
 /* Email link with underline */
 .contact-info .mail{
-font-weight: 700;
+font-weight: 500;
 text-decoration: underline;
 text-decoration-style: solid;
 text-decoration-thickness: 0%;
@@ -1572,7 +1636,7 @@ margin-top: 60px;
 
 /* Footer column heading styling */
 .footer-col h4 {
-font-weight: 600;
+font-weight: 400;
 font-size: 12px;
 line-height: 16px;
 letter-spacing: -0.6%;
@@ -1595,7 +1659,7 @@ margin-bottom: 16px;
 .footer-col ul li a {
 text-decoration: none;
 color: #4b5563;
-font-weight: 500;
+font-weight: 400;
 font-size: 14px;
 line-height: 20px;
 letter-spacing: -0.6%;
@@ -1734,7 +1798,7 @@ gap: 16px;
 /* Feature card title styling */
 .feature-title {
 font-family: Urbanist;
-font-weight: 600; 
+font-weight: 400; 
 font-size: 20px;
 line-height: 120%;
 letter-spacing: 0px;
@@ -1760,25 +1824,46 @@ flex: 1 1 100%;
 /* ========================================
 PRODUCT GALLERY & IMAGE STYLES
 ======================================== */
-/* Product gallery container - vertical flex */
+/* Product gallery container - vertical flex; stretch to match quote column height */
 .product-gallery {
 display: flex;
 flex-direction: column;
-gap: 20px;
-align-items: center;
+gap: 24px;
+align-items: stretch;
 flex: 1;
+min-width: 0;
+align-self: stretch;
 }
 
-/* Main product image container */
+/* Main product image container — grows to fill space above thumbnails */
 .main-image-container {
 position: relative;
+flex: 1 1 auto;
+min-height: 0;
+width: 100%;
+display: block;
 }
 
-/* Large product image with border and shadow */
+/* Large product image with border and shadow — fills container height (matches right column) */
 .main-image-container img {
-border-radius: 24px;
-border: 3px solid #FFFFFF;
-box-shadow: 0px 20px 40px 20px #585C5F33;
+position: absolute;
+inset: 0;
+z-index: 1;
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+border-radius: 20px;
+border: 2px solid #ffffff;
+box-shadow:
+  0 12px 40px rgba(15, 23, 42, 0.1),
+  0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+/* Keep controls above the full-bleed image */
+.main-image-container .nav-btn {
+z-index: 3;
+cursor: pointer;
 }
 
 /* Image magnifier glass overlay - hidden by default */
@@ -1801,19 +1886,30 @@ box-shadow: 0px 20px 40px -8px #585C5F33;
 /* Thumbnail carousel for product image selection */
 .thumbnail-carousel {
 display: flex;
-gap: 20px;
+gap: 28px;
 overflow-x: auto;
+flex-shrink: 0;
+justify-content: center;
+align-items: center;
+padding-top: 4px;
 }
 
 /* Individual thumbnail image styling */
 .thumbnail-carousel img {
-width: 80px;
-height: 80px;
-border-radius: 8px;
-border: 1px solid  #CFD1D4;
+width: 76px;
+height: 76px;
+border-radius: 12px;
+border: 1px solid #e5e7eb;
+background-color: #ffffff;
 object-fit: cover;
 cursor: pointer;
-transition: transform 0.3s;
+transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.thumbnail-carousel img:hover {
+border-color: #cbd5e1;
+box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
 }
 
 /* ========================================
@@ -1822,7 +1918,6 @@ MAGNIFIER CURSOR STYLING
 /* Hide default cursor inside main image container */
 .main-image-container {
 cursor: none;
-position: relative;
 }
 
 /* Custom magnifier cursor square - hidden by default */
@@ -1866,7 +1961,7 @@ align-items: center;
 /* Product name heading */
 .product-details h1{
 font-family: Urbanist;
-font-weight: 700;
+font-weight: 500;
 font-size: 24px;
 line-height: 140%;
 letter-spacing: -0.6%;
@@ -1876,7 +1971,7 @@ color:#0D0D0D;
 /* Product subtitle heading */
 .product-details h3{
 font-family: Urbanist;
-font-weight: 500;
+font-weight: 400;
 font-size: 20px;
 line-height: 140%;
 letter-spacing: 0px;
@@ -1885,7 +1980,7 @@ color: #111827;
 
 /* Contact form card heading */
 .contact-form-card h3{
-font-weight: 500;
+font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 letter-spacing: -0.6%;
@@ -2037,6 +2132,18 @@ flex:1
 .hero-section {
 flex-direction: column-reverse;
 }
+
+/* Stacked layout: cap gallery height — don’t stretch to full quote block */
+.product-gallery {
+width: 100%;
+}
+
+.main-image-container {
+flex: 0 0 auto;
+min-height: min(420px, 55vh);
+aspect-ratio: 4 / 3;
+max-height: 520px;
+}
 }
 
 /* Show menu content by default */
@@ -2049,6 +2156,14 @@ display: block;
 /* Hide menu on very small screens */
 .menu-content{
 display: none;
+}
+
+/* Hero image: drop aspect-ratio box from tablet rule */
+.main-image-container {
+aspect-ratio: auto;
+min-height: auto;
+max-height: none;
+flex: 0 0 auto;
 }
 
 /* Thumbnail carousel flex sizing */
@@ -2069,13 +2184,17 @@ height: 69px;
 
 /* Smaller heading on mobile */
 .quote-details h1 {
-font-size: 36px;
+font-size: clamp(28px, 6vw, 42px);
 }
 
-/* Product image sizing for mobile */
+/* Product image sizing for mobile — fixed square, not stretch-to-column */
 .main-image-container img {
+position: relative;
+inset: auto;
 width: 320px;
 height: 320px;
+max-width: 100%;
+object-fit: cover;
 }
 
 /* Button image sizing in product container */
@@ -2122,9 +2241,11 @@ font-size: 36px;
 width: 100%;
 }
 
-/* Constrained max width for product image container */
+/* Constrained max width for product image container on small phones */
 .main-image-container{
-max-width: 300px;
+max-width: min(100%, 320px);
+margin-left: auto;
+margin-right: auto;
 }
 
 /* Full width hero buttons */
@@ -2245,7 +2366,7 @@ margin-left: auto;
 /* Modal header heading styling */
 .modal-header h2{
 font-family: Inter;
-font-weight: 500;
+font-weight: 400;
 font-style: Medium;
 font-size: 18px;
 line-height: 140%;

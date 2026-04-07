@@ -210,8 +210,19 @@ function changeImage(src) {
   magnifier.style.backgroundImage = `url(${src})`;
 }
 
+// True when cursor is over carousel arrow buttons (no zoom there)
+function isOverNavArrow(target) {
+  if (!target || !target.closest) return false;
+  return Boolean(target.closest(".nav-btn"));
+}
+
 // Show magnified view on mouse move
 function magnify(e) {
+  if (isOverNavArrow(e.target)) {
+    hideZoom();
+    return;
+  }
+
   const rect = mainImage.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
@@ -235,8 +246,14 @@ function hideZoom() {
 const magnifierCursor = document.getElementById("magnifier-cursor");
 const imageContainer = document.querySelector(".main-image-container");
 
-// Track mouse position for custom cursor
+// Track mouse position for custom cursor (disabled over nav arrows)
 imageContainer.addEventListener("mousemove", (e) => {
+  if (isOverNavArrow(e.target)) {
+    magnifierCursor.style.display = "none";
+    hideZoom();
+    return;
+  }
+
   const rect = imageContainer.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
